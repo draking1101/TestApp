@@ -1,0 +1,36 @@
+// 導入元件
+// import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
+import Mybutton from './Src/components/Mybutton';
+
+// UI渲染
+export default function App() {
+  const print = () => {
+    console.log('test')
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text>原始程式碼</Text>
+      <Mybutton style={styles.Mybutton} Mytitle='Test' Myonpress={() => print()}></Mybutton>
+    </View>
+  )
+};
+
+// 樣式表
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#dfc5ae',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  Mybutton: {
+    width: 150,
+    height: 80,
+    padding: 10,
+    textAlign: 'center',
+    backgroundColor: 'silver',
+  }
+});

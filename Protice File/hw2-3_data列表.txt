@@ -1,0 +1,88 @@
+// 導入元件
+// import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Button, TextInput, Alert, FlatList, TouchableOpacity, Image } from 'react-native';
+
+var Mocked_Data = [
+  {
+    id: '1',
+    note: '這是第1張圖片',
+    date: '2024/1/1',
+    img: require('./Src/img/penguin.png'),
+  },
+  {
+    id: '2',
+    note: '這是第2張圖片',
+    date: '2024/2/1',
+    img: require('./Src/img/002-粉絲形象(去背).png'),
+  },
+]
+
+// const [data, setdata] = useState([])
+
+// // useEffect(() => {
+// //   var FakeSource = Mocked_Data
+// //   setdata(FakeSource)
+// // })
+
+const renderdata = (cases) => {
+  return (
+    <TouchableOpacity>
+      <View style={{ flexDirection: 'row', width: 350, padding: 30, justifyContent: 'center', top: 50 }}>
+        
+        {/*---- 圖片 ---- */}
+        <View style={styles.MainView}>
+          <Image source={cases.img} style={styles.Mainimg} />
+        </View>
+        {/*---- 標題與內容 ---- */}
+        <View style={{ width: 200, fontSize: 20, padding: 30, textAlign: 'center' }}>
+          <Text>
+            {cases.note}
+          </Text>
+          <Text>
+            {cases.date}
+          </Text>
+        </View>
+
+      </View>
+    </TouchableOpacity >
+  )
+}
+
+// UI渲染
+export default function App() {
+
+
+  return (
+    <View style={styles.container}>
+      {/* <Text>原始程式碼</Text> */}
+      <FlatList
+        data={Mocked_Data}
+        renderItem={cases => renderdata(cases.item)}
+        keyExtractor={cases => cases.id}
+        style={{ backgroundColor: 'white' }}
+      />
+    </View>
+  )
+};
+
+// 樣式表
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#dfc5ae',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  MainView: {
+    width: 30,
+    height: 80,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  Mainimg: {
+    width: 80,
+    height: 80,
+  }
+});

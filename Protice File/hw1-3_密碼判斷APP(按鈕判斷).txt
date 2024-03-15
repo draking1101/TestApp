@@ -1,0 +1,81 @@
+// 導入元件
+// import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput, Alert, TouchableOpacity } from 'react-native';
+
+// UI渲染
+export default function App() {
+  const [Password, setPassword] = useState('')
+  const [hint, sethint] = useState('')
+  const ValidPassword = () => {
+    if (Password.length === 5) {
+      if (Password === '12345') {
+        sethint('密碼正確')
+      } else {
+        sethint('密碼錯誤!!!')
+      }
+    } else {
+      sethint('請輸入5位數密碼!')
+    }
+  }
+
+  return (
+    <View style={styles.container}>
+
+      {/* 標題 */}
+      <Text style={{ fontSize: 25, fontWeight: 600 }}>HW3 - 密碼判斷 App</Text>
+
+      {/* 輸入框 */}
+      <TextInput
+        style={styles.textinput}
+        onChangeText={(text) => setPassword(text)}
+        placeholder='請輸入密碼'
+        value={Password}
+        maxLength={5}
+        secureTextEntry={true}
+        keyboardType='numeric'
+      ></TextInput>
+
+      {/* 提示欄 */}
+      <Text style={styles.hint}>{hint}</Text>
+
+      {/* 密碼驗證按鈕 */}
+      <TouchableOpacity onPress={ValidPassword}>
+        <Text style={styles.ValidButton}>{'Press me to \nValid Password'}</Text>
+      </TouchableOpacity>
+    </View >
+  )
+};
+
+// 樣式表
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#dfc5ae',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textinput: {
+    width: 300,
+    height: 80,
+    marginTop: 15,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 15,
+    textAlign: 'center',
+    fontSize: 25,
+  },
+  hint: {
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 15,
+  },
+  ValidButton: {
+    textAlign: 'center',
+    width: 160,
+    height: 50,
+    fontSize: 16,
+    backgroundColor: 'rgba(120,120,120,1)',
+    borderRadius: 20,
+  }
+});
