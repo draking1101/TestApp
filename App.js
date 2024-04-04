@@ -2,80 +2,15 @@
 // import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import HomeScreen from './Src/screens/HomeScreen';
-import SettingsScreen from './Src/screens/SettingsScreen';
-import HomeScreenDetails from './Src/screens/HomeDetailsScreen';
-import SettingsScreenDetails from './Src/screens/SettingsDetailsScreen';
-import SettingsDetailsScreen from './Src/screens/SettingsDetailsScreen';
-const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
-function HomeStack() {
-  return (
-    <Stack.Navigator
-      // 初始頁面
-      initialRouteName='HomeScreen'
-      // Header設定
-      screenOptions={
-        {
-          headerStyle: { backgroundColor: '#ccccff' },
-          // headerBackTitle: '返回', 限 IOS才可用
-        }
-      }
-    >
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="HomeDetailsScreen" component={HomeScreenDetails} />
-    </Stack.Navigator>
-  )
-}
-function SettingsStack() {
-  return (
-    <Stack.Navigator
-      // 初始頁面
-      initialRouteName='SettingsScreen'
-      // Header設定
-      screenOptions={
-        {
-          headerStyle: { backgroundColor: '#ccccff' },
-          // headerBackTitle: '返回', 限 IOS才可用
-        }
-      }
-    >
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
-      <Stack.Screen name="SettingsDetailsScreen" component={SettingsDetailsScreen} />
-    </Stack.Navigator>
-  )
-}
 // UI渲染
 export default function App() {
 
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color }) => {
-            let Iconname
-            if (route.name === 'Home') {
-              Iconname = 'trophy'
-            } else if (route.name === 'Settings') {
-              Iconname = 'options'
-            }
-            // You can return any component that you like here!
-            return <Ionicons name={Iconname} size={25} color={color} />
-          },
-          tabBarActiveTintColor: '#e73902',
-          tabBarInactiveTintColor: 'gray',
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Settings" component={SettingsStack} />
-      </Tab.Navigator>
-    </NavigationContainer >
+    <View style={styles.container}>
+      <Text>原始程式碼</Text>
+    </View>
   )
 };
 
